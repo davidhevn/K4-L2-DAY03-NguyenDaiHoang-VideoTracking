@@ -78,7 +78,7 @@ Cấu hình từ `outputs/model_run_config.json`:
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | bạn vs gold | 0.856 | 0.835 | 0.882 | 0.898 | 0.924 | 0.872 | 0.890 | 22 | 19 | 0 |
 | ByteTrack control vs gold | 0.742 | 0.701 | 0.795 | 0.872 | 0.812 | 0.735 | 0.865 | 92 | 68 | 6 |
-| BoT-SORT + ReID vs gold | 0.778 | 0.715 | 0.842 | 0.886 | 0.865 | 0.760 | 0.875 | 84 | 58 | 3 |
+| BoT-SORT + ReID vs gold | 0.763 | 0.711 | 0.820 | 0.886 | 0.900 | 0.760 | 0.875 | 91 | 26 | 2 |
 | ReID vs bạn | 0.764 | 0.707 | 0.828 | 0.890 | 0.889 | 0.777 | 0.878 | 80 | 53 | 3 |
 
 ## 5. Phân tích — năm câu hỏi
@@ -89,7 +89,9 @@ Cấu hình từ `outputs/model_run_config.json`:
 
 **2. ByteTrack control và BoT-SORT + ReID treatment khác nhau thế nào ở IDF1, AssA và IDSW? Dẫn một frame sequence để giải thích treatment tốt hơn, tệ hơn hoặc không đổi đáng kể. Nhắc rõ đây không cô lập causal effect của ReID vì hai tracker implementation khác.**
 
-`BoT-SORT + ReID cho kết quả Association vượt trội hơn ByteTrack control (AssA tăng, IDSW giảm từ 6 xuống 3). Tại phân đoạn frame 105 - 115 khi các xe đi giao cắt hoặc che khuất nhau, ByteTrack thuần dựa vào motion/Kalman filter dễ bị lạc hướng khi vận tốc thay đổi đột ngột; trong khi đó, BoT-SORT bổ sung thêm đặc trưng ngoại hình (appearance embeddings) giúp duy trì nhận diện xe khi xuất hiện trở lại. Tuy nhiên, đây là sự so sánh giữa hai hệ thống hoàn chỉnh (system comparison) chứ không cô lập biến độc lập ReID, bởi vì ByteTrack và BoT-SORT còn có sự khác biệt về thuật toán liên kết hộp và xử lý camera motion.`
+`BoT-SORT + ReID cho kết quả Association vượt trội hơn ByteTrack control (AssA tăng, IDSW giảm từ 6 xuống 2). Tại phân đoạn frame 105 - 115 khi các xe đi giao cắt hoặc che khuất nhau, ByteTrack thuần dựa vào motion/Kalman filter dễ bị lạc hướng khi vận tốc thay đổi đột ngột; trong khi đó, BoT-SORT bổ sung thêm đặc trưng ngoại hình (appearance embeddings) giúp duy trì nhận diện xe khi xuất hiện trở lại. Tuy nhiên, đây là sự so sánh giữa hai hệ thống hoàn chỉnh (system comparison) chứ không cô lập biến độc lập ReID, bởi vì ByteTrack và BoT-SORT còn có sự khác biệt về thuật toán liên kết hộp và xử lý camera motion.`
+
+*(Nhận xét mục Stretch ReID: Khi thử nghiệm các ngưỡng appearance_thresh khác nhau (0.7, 0.8, 0.9), các chỉ số HOTA (0.763), AssA (0.820) và IDSW (2) gần như không thay đổi. Điều này cho thấy việc siết chặt thêm ngưỡng nhận diện ngoại quan không mang lại lợi ích rõ rệt trên clip này, vì các ca occlusion/crossing đã được giải quyết ở ngưỡng mặc định 0.8).*
 
 **3. DetA, FP và FN đổi thế nào? Lỗi còn lại là detector hay association?**
 
