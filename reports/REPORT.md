@@ -49,7 +49,7 @@ Ca nào hai người quyết khác nhau, và luật nào còn thiếu trong `GUI
 | | HOTA | DetA | AssA | LocA | IDF1 | MOTA | MOTP | FP | FN | IDSW |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Bản pre-gold | 0.812 | 0.795 | 0.840 | 0.885 | 0.895 | 0.820 | 0.875 | 45 | 38 | 1 |
-| Sau rework | 0.856 | 0.835 | 0.882 | 0.898 | 0.924 | 0.872 | 0.890 | 22 | 19 | 0 |
+| Sau rework | 0.816 | 0.804 | 0.829 | 0.883 | 0.960 | 0.916 | 0.872 | 43 | 5 | 0 |
 
 *(Lưu ý: Nếu chưa nhận file gold từ Lab Coach, trên Colab đã chạy so sánh ReID vs Bạn: HOTA 0.764, DetA 0.707, AssA 0.828, IDF1 0.889, MOTA 0.777, MOTP 0.878).*
 
@@ -76,9 +76,9 @@ Cấu hình từ `outputs/model_run_config.json`:
 
 | So sánh | HOTA | DetA | AssA | LocA | IDF1 | MOTA | MOTP | FP | FN | IDSW |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| bạn vs gold | 0.856 | 0.835 | 0.882 | 0.898 | 0.924 | 0.872 | 0.890 | 22 | 19 | 0 |
-| ByteTrack control vs gold | 0.742 | 0.701 | 0.795 | 0.872 | 0.812 | 0.735 | 0.865 | 92 | 68 | 6 |
-| BoT-SORT + ReID vs gold | 0.763 | 0.711 | 0.820 | 0.886 | 0.900 | 0.760 | 0.875 | 91 | 26 | 2 |
+| bạn vs gold | 0.816 | 0.804 | 0.829 | 0.883 | 0.960 | 0.916 | 0.872 | 43 | 5 | 0 |
+| ByteTrack control vs gold | 0.708 | 0.649 | 0.776 | 0.846 | 0.875 | 0.749 | 0.823 | 88 | 54 | 2 |
+| BoT-SORT + ReID vs gold | 0.764 | 0.711 | 0.820 | 0.872 | 0.900 | 0.792 | 0.860 | 91 | 26 | 2 |
 | ReID vs bạn | 0.764 | 0.707 | 0.828 | 0.890 | 0.889 | 0.777 | 0.878 | 80 | 53 | 3 |
 
 ## 5. Phân tích — năm câu hỏi
